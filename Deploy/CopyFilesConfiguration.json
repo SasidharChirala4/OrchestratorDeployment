@@ -1,0 +1,17 @@
+{
+  "description": "e-DReaMS BE Copy Files Configuration File",
+  "version": "1.0",
+  "author": "Deloitte",
+  "configuration": [
+    {
+      "key": "AdaptorWindowsService",
+      "value": {
+        "server": "#{edr.adaptor.windowsservice.server}#",
+        "scriptsToCopy": "Scripts\\WindowsService",
+        "packagesToCopy": "Packages\\AdaptorWindowsService",
+        "configToCopy": [ ".\\Configuration.json" ],
+        "targetPath": "#{edr.adaptor.windowsservice.share}#"
+      }
+    }
+  ]
+}

@@ -1,0 +1,98 @@
+{
+  "description": "e-DReaMS adaptor Configuration File",
+  "version": "1.0",
+  "author": "Deloitte",
+  "configuration": [
+    {
+      "key": "AdaptorDatabase",
+      "value": {
+        "installationCredentialName": "OrchestratorAdaptorDKSqlAccount",
+        "sqlServer": {
+          "server": "sp2016_lsb",
+          "database": "EDREAMSADAPTORDK",
+          "table": "ProcessingHistory"
+        },
+        "entityFramework": {
+          "migrationsAssembly": "Packages\\DK\\Database\\Adaptor\\Release\\EdreamsAdaptor.Worker.Db.dll",
+          "command": "Publish-EdreamsAdaptorDatabase"
+        }
+      }
+    },
+    {
+      "key": "AdaptorLoggingDatabase",
+      "value": {
+        "installationCredentialName": "OrchestratorAdaptorDKSqlAccount",
+        "sqlServer": {
+          "server": "sp2016_lsb",
+          "database": "EDREAMSADAPTORDK-LOGGING",
+          "table": "__Logs"
+        },
+        "entityFramework": {
+          "migrationsAssembly": "Packages\\DK\\Database\\Logging\\Release\\EdreamsAdaptor.Worker.Logging.Db.dll",
+          "command": "Publish-EdreamsAdaptorLoggingDatabase"
+        }
+      }
+    },    
+    {
+      "key": "AdaptorWindowsService",
+      "value": {
+        "installationCredentialName": "OrchestratorAdaptorDKWindowsServiceAccount",
+        "service": {
+          "name": "EdreamsAdaptorWorkerService-DK",
+          "displayName": "Edreams Adaptor Worker service DK",
+          "description": "This service is configured to run all swift Denmark adaptor collectors",
+          "binaryPath": "EdreamsAdaptor.Worker.exe",
+          "enabled": "true",
+          "startup": "Automatic"
+        },
+        "configuration": {
+          "edreamsimporturl": "https://edreamsdk-app.deloitte.be/eDReaMS/api/v1/import",
+          "edreamstokenSample": "NDlmMzdmNTUtOTJkNS00ZGUxLTgyZjgtZGMyMzNmY2FmYTQ3",
+          "edreamstokenStaffing": "NDRlZjc4MjItYzEzMy00NWQ3LWEyNGQtZTE5NzBkN2I4NmJm",
+          "edreamstokenCustomerChange": "ZjJlOTQ5YzItZTA5OS00YmY5LTkzOTQtM2I2N2YyYmMwYzk0",
+          "edreamstokenProjectChange": "NGE0MDY5ZDEtYjUxMS00YTc2LWJkZGYtMjUwZmZmMDAxZTdi",
+          "edreamstokenUserChange": "ZjFlYWZhN2MtMzhhNS00NjViLThjMDItMTMyZGUyZGU1NmUz",
+          "edreamstokenAdminConsult": "",
+          "mulesoftresource": "https://api.be.deloitte.com/v1/edreams/x-api/engagements",
+          "mulesofttenantid": "36da45f1-dd2c-4d1f-af13-5abe46b99921",
+          "mulesoftauthorisationtokenclientid": "7b22a187-0e22-43f4-a394-0ae30e79c664",
+          "mulesoftauthorisationtokenclientsecret": "P29fO1VuOC9zWHxHUTRkZSRdeHtHSzZpZzNDJUZDbzV4aA==",
+          "mulesoftapiclientid": "dd48fcacff2b429f82727025a96ff1ae",
+          "mulesoftapiclientsecret": "072329122c8A48269644f64Bf64E1fBf",
+          "mulesoftcountry": "Denmark",
+          "connectionstringedreamsadaptor": "Data Source=sp2016_lsb;Initial Catalog=EDREAMSADAPTORDK;Integrated Security=True;MultipleActiveResultSets=true",
+          "connectionstringedreamsadaptorlogging": "Data Source=sp2016_lsb;Initial Catalog=EDREAMSADAPTORDK-LOGGING;Integrated Security=True;MultipleActiveResultSets=true",
+          "connectionstringadminconsultcache": "",
+          "samplecollectorenabled": "false",
+          "samplecollectorinterval": "00:00:15:00",
+          "samplecollectormulesoftpagesize": "5",
+          "samplecollectorexampleoption": "Hello sample!",
+          "samplecollectorlastprocessed": "5",
+          "samplecollectorwbsdetails": "ABC,DEF",
+          "staffingcollectorenabled": "false",
+          "staffingcollectorinterval": "00:00:15:00",
+          "staffingcollectormulesoftpagesize": "500",
+          "staffingcollectorwbsdetailrequestbatchsize": 50,
+          "staffingcollectorensuredependantobjectsfordeStaffings": "true",
+          "edreamsauditconfirmationletteremail": "",
+          "customercollectorenabled": "false",
+          "customercollectorinterval": "00:06:00:00",
+          "customercollectormulesoftpagesize": "500",
+          "projectcollectorenabled": "false",
+          "projectcollectorinterval": "00:03:00:00",
+          "projectcollectormulesoftpagesize": "500",
+          "projectcollectorwbsdetailrequestbatchsize": 50,
+          "usercollectorenabled": "false",
+          "usercollectorinterval": "05:00:00:00",
+          "adminconsultcollectorenabled": "false",
+          "adminconsultcollectorinterval": "",
+          "adminconsultcollectorconnectionstring": ""
+        },
+        "publishPackage": {
+          "packageSource": "..\\..\\Packages\\DK\\Release",
+          "publishDestination": "C:\\Program Files (x86)\\DSI\\Edreams\\AdaptorDK"
+        }
+      }
+    }
+  ]
+}

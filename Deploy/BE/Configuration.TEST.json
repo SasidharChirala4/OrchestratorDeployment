@@ -1,0 +1,113 @@
+{
+  "description": "e-DReaMS adaptor Configuration File",
+  "version": "1.0",
+  "author": "Deloitte",
+  "configuration": [
+    {
+      "key": "AdaptorDatabase",
+      "value": {
+        "installationCredentialName": "OrchestratorAdaptorSqlAccount",
+        "sqlServer": {
+          "server": "BEWTS0535",
+          "database": "EDREAMSADAPTOR",
+          "table": "ProcessingHistory"
+        },
+        "entityFramework": {
+          "migrationsAssembly": "Packages\\BE\\Database\\Adaptor\\Release\\EdreamsAdaptor.Worker.Db.dll",
+          "command": "Publish-EdreamsAdaptorDatabase"
+        }
+      }
+    },
+    {
+      "key": "AdaptorLoggingDatabase",
+      "value": {
+        "installationCredentialName": "OrchestratorAdaptorSqlAccount",
+        "sqlServer": {
+          "server": "BEWTS0535",
+          "database": "EDREAMSADAPTOR-LOGGING",
+          "table": "__Logs"
+        },
+        "entityFramework": {
+          "migrationsAssembly": "Packages\\BE\\Database\\Logging\\Release\\EdreamsAdaptor.Worker.Logging.Db.dll",
+          "command": "Publish-EdreamsAdaptorLoggingDatabase"
+        }
+      }
+    },
+    {
+      "key": "AdminConsultDatabase",
+      "value": {
+        "installationCredentialName": "OrchestratorAdaptorSqlAccount",
+        "sqlServer": {
+          "server": "BEWTS0535",
+          "database": "EDREAMSADAPTOR-ADMINCONSULTCACHE",
+          "table": "AC_Contact"
+        },
+        "entityFramework": {
+          "migrationsAssembly": "Packages\\BE\\Database\\AdminConsult\\Release\\EdreamsAdaptor.AdminConsult.Db.dll",
+          "command": "Publish-EdreamsAdaptorAdminConsultDatabase"
+        }
+      }
+    },
+    {
+      "key": "AdaptorWindowsService",
+      "value": {
+        "installationCredentialName": "OrchestratorAdaptorWindowsServiceAccount",
+        "service": {
+          "name": "EdreamsAdaptorWorkerService-BE",
+          "displayName": "Edreams Adaptor Worker service BE",
+          "description": "This service is configured to run all swift Belgium adaptor collectors",
+          "binaryPath": "EdreamsAdaptor.Worker.exe",
+          "enabled": "true",
+          "startup": "Automatic"
+        },
+        "configuration": {
+          "edreamsimporturl": "https://edr-app-t.be.deloitte.com/eDReaMS/api/v1/import",
+          "edreamstokenSample": "MUUzQ0MxODAtRDIzNS00RTA3LUIzMjAtNDE5NjNEMzA3NzMw",
+          "edreamstokenStaffing": "OTAwYTY2OTMtMTE4Ni00OWQ5LTgwOTAtMDYyYzU3YmQ4OGRi",
+          "edreamstokenCustomerChange": "Yjg1YWRlNjktMGRkNC00Y2FmLWFmYzctNTI3ZGFjOGU4Zjcx",
+          "edreamstokenProjectChange": "MGNkOGFiNzktN2Q4ZS00MTAzLThkYmQtOGM0MzZkYmRlMWZh",
+          "edreamstokenUserChange": "ZjVmZjRlZDktMGI0Zi00NjUzLTg5ZWEtZTVjZGM0NWE4ZTFh",
+          "edreamstokenAdminConsult": "RjVGRjRFRDktMEI0Ri00NjUzLTg5RUEtRTVDREM0NUE4RTFB",
+          "mulesoftresource": "https://sandbox.api.be.deloitte.com/uat/v1/edreams/x-api/engagements",
+          "mulesofttenantid": "36da45f1-dd2c-4d1f-af13-5abe46b99921",
+          "mulesoftauthorisationtokenclientid": "5f2804ee-f3a0-4281-b156-19a74211621a",
+          "mulesoftauthorisationtokenclientsecret": "d8-1.V1Og.MwZR6V.4w~Ir.gizFSO3HaUW",
+          "mulesoftapiclientid": "690e371f45ea460eae13173faeffdeb6",
+          "mulesoftapiclientsecret": "9aE4A1b8D934497D9be9674D60b6b4B5",
+          "mulesoftcountry": "Belgium",
+          "connectionstringedreamsadaptor": "Data Source=BEWTS0535;Initial Catalog=EDREAMSADAPTOR;Integrated Security=True;MultipleActiveResultSets=true",
+          "connectionstringedreamsadaptorlogging": "Data Source=BEWTS0535;Initial Catalog=EDREAMSADAPTOR-LOGGING;Integrated Security=True;MultipleActiveResultSets=true",
+          "connectionstringadminconsultcache": "Data Source=BEWTS0535;Initial Catalog=EDREAMSADAPTOR-ADMINCONSULTCACHE;Integrated Security=True;MultipleActiveResultSets=true",
+          "samplecollectorenabled": "false",
+          "samplecollectorinterval": "00:00:10:00",
+          "samplecollectormulesoftpagesize": "500",
+          "samplecollectorexampleoption": "Hello sample!",
+          "samplecollectorlastprocessed": "5",
+          "samplecollectorwbsdetails": "ABC,DEF",
+          "staffingcollectorenabled": "false",
+          "staffingcollectorinterval": "00:23:00:00",
+          "staffingcollectormulesoftpagesize": "500",
+          "staffingcollectorwbsdetailrequestbatchsize": 50,
+          "staffingcollectorensuredependantobjectsfordeStaffings": "false",
+          "edreamsauditconfirmationletteremail": "beaaconfletuat@deloitte.com",
+          "customercollectorenabled": "false",
+          "customercollectorinterval": "00:23:00:00",
+          "customercollectormulesoftpagesize": "500",
+          "projectcollectorenabled": "false",
+          "projectcollectorinterval": "00:23:00:00",
+          "projectcollectormulesoftpagesize": "500",
+          "projectcollectorwbsdetailrequestbatchsize": 50,
+          "usercollectorenabled": "false",
+          "usercollectorinterval": "00:23:00:00",
+          "adminconsultcollectorenabled": "false",
+          "adminconsultcollectorinterval": "00:06:00:00",
+          "adminconsultcollectorconnectionstring": "Driver={SQL Anywhere 17};LINKS=tcpip{host=10.67.80.36};ENG=dbserver_test;DBN=AdminConsult_QA;uid=Company1;pwd=password"
+        },
+        "publishPackage": {
+          "packageSource": "..\\..\\Packages\\BE\\Release",
+          "publishDestination": "C:\\Program Files (x86)\\DSI\\Edreams\\Adaptor"
+        }
+      }
+    }
+  ]
+}

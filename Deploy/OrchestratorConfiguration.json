@@ -1,0 +1,120 @@
+{
+  "description": "EdreamsAdaptor.Worker.Deployment Orchestrator",
+  "version": "1.0",
+  "author": "Deloitte",
+  "steps": [
+    {
+      "description": "**** 1.0 Copy ****",
+      "steps": [
+        {
+          "description": "1.4 Edreams Adaptor Worker Service",
+          "script": "./Scripts/Common/CopyFiles.ps1",
+          "configurationKey": "AdaptorWindowsService",
+          "configurationPath": "./CopyFilesConfiguration.json",
+          "remote": "False",
+          "useCredentials": "False"
+        }
+      ]
+    },
+    {
+      "description": "**** 2.0 PreDeploy ****",
+      "steps": [
+        {
+          "description": "2.1 Edreams Adaptor Database",
+          "script": "./Scripts/Database/1.PreDeploy.ps1",
+          "configurationKey": "AdaptorDatabase",
+          "configurationPath": "./Configuration.json",
+          "remote": "False"
+        },
+        {
+          "description": "2.2 Admin Consult Database",
+          "script": "./Scripts/Database/1.PreDeploy.ps1",
+          "configurationKey": "AdminConsultDatabase",
+          "configurationPath": "./Configuration.json",
+          "remote": "False"
+        },
+        {
+          "description": "2.3 Edreams Adaptor Logging Database",
+          "script": "./Scripts/Database/1.PreDeploy.ps1",
+          "configurationKey": "AdaptorLoggingDatabase",
+          "configurationPath": "./Configuration.json",
+          "remote": "False"
+        },
+        {
+          "description": "2.4 Edreams Adaptor Worker Service",
+          "script": "./Scripts/WindowsService/1.PreDeploy.ps1",
+          "configurationKey": "AdaptorWindowsService",
+          "configurationPath": "./Configuration.json",
+          "remote": "True"
+        }
+      ]
+    },
+    {
+      "description": "**** 3.0 Deploy ****",
+      "steps": [
+        {
+          "description": "3.1 Edreams Adaptor Database",
+          "script": "./Scripts/Database/2.Deploy.ps1",
+          "configurationKey": "AdaptorDatabase",
+          "configurationPath": "./Configuration.json",
+          "remote": "False"
+        },
+        {
+          "description": "3.2 Admin Consult Database",
+          "script": "./Scripts/Database/2.Deploy.ps1",
+          "configurationKey": "AdminConsultDatabase",
+          "configurationPath": "./Configuration.json",
+          "remote": "False"
+        },
+        {
+          "description": "3.3 Edreams Adaptor Logging Database",
+          "script": "./Scripts/Database/2.Deploy.ps1",
+          "configurationKey": "AdaptorLoggingDatabase",
+          "configurationPath": "./Configuration.json",
+          "remote": "False"
+        },
+        {
+          "description": "3.4 Edreams Adaptor Worker Service",
+          "script": "./Scripts/WindowsService/2.Deploy.ps1",
+          "configurationKey": "AdaptorWindowsService",
+          "configurationPath": "./Configuration.json",
+          "remote": "True"
+        }
+      ]
+    },
+    {
+      "description": "**** 4.0 PostDeploy ****",
+      "steps": [
+        {
+          "description": "4.1 Edreams Adaptor Database",
+          "script": "./Scripts/Database/3.PostDeploy.ps1",
+          "configurationKey": "AdaptorDatabase",
+          "configurationPath": "./Configuration.json",
+          "remote": "False"
+        },
+        {
+          "description": "4.2 Admin Consult Database",
+          "script": "./Scripts/Database/3.PostDeploy.ps1",
+          "configurationKey": "AdminConsultDatabase",
+          "configurationPath": "./Configuration.json",
+          "remote": "False"
+        },
+        {
+          "description": "4.3 Edreams Adaptor Logging Database",
+          "script": "./Scripts/Database/3.PostDeploy.ps1",
+          "configurationKey": "AdaptorLoggingDatabase",
+          "configurationPath": "./Configuration.json",
+          "remote": "False"
+        },
+        {
+          "description": "4.4 Edreams Adaptor Worker Service",
+          "script": "./Scripts/WindowsService/3.PostDeploy.ps1",
+          "configurationKey": "AdaptorWindowsService",
+          "configurationPath": "./Configuration.json",
+          "remote": "True"
+        }
+      ]
+    }
+
+  ]
+}

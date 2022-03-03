@@ -1,0 +1,121 @@
+{
+  "description": "e-DReaMS adaptor BE Configuration File",
+  "version": "1.0",
+  "author": "Deloitte",
+  "configuration": [
+    {
+      "key": "AdaptorDatabase",
+      "shouldExecute":  "#{edr.adaptor.adaptordatabase.shouldexecute}#",
+      "value": {
+        "installationCredentialUserName": "#{OrchestratorAdaptorAccountUsername}#",
+        "installationCredentialPassword": "#{OrchestratorAdaptorAccountPassword}#",
+        "sqlServer": {
+          "server": "#{edr.adaptor.adaptordatabase.server}#",
+          "database": "#{edr.adaptor.adaptordatabase.database}#",
+          "table": "#{edr.adaptor.adaptordatabase.table}#"
+        },
+        "entityFramework": {
+          "migrationsAssembly": "#{edr.adaptor.adaptordatabase.migrationsassembly}#",
+          "command": "#{edr.adaptor.adaptordatabase.command}#"
+        }
+      }
+    },
+    {
+      "key": "AdaptorLoggingDatabase",
+      "shouldExecute": "#{edr.adaptor.loggingdatabase.shouldexecute}#",
+      "value": {
+        "installationCredentialUserName": "#{OrchestratorAdaptorAccountUsername}#",
+        "installationCredentialPassword": "#{OrchestratorAdaptorAccountPassword}#",
+        "sqlServer": {
+          "server": "#{edr.adaptor.loggingdatabase.server}#",
+          "database": "#{edr.adaptor.loggingdatabase.database}#",
+          "table": "#{edr.adaptor.loggingdatabase.table}#"
+        },
+        "entityFramework": {
+          "migrationsAssembly": "#{edr.adaptor.loggingdatabase.migrationsassembly}#",
+          "command": "#{edr.adaptor.loggingdatabase.command}#"
+        }
+      }
+    },
+    {
+      "key": "AdminConsultDatabase",
+      "shouldExecute": "#{edr.adaptor.adminconsultdatabase.shouldexecute}#",
+      "value": {
+        "installationCredentialUserName": "#{OrchestratorAdaptorAccountUsername}#",
+        "installationCredentialPassword": "#{OrchestratorAdaptorAccountPassword}#",
+        "sqlServer": {
+          "server": "#{edr.adaptor.adminconsultdatabase.server}#",
+          "database": "#{edr.adaptor.adminconsultdatabase.database}#",
+          "table": "#{edr.adaptor.adminconsultdatabase.table}#"
+        },
+        "entityFramework": {
+          "migrationsAssembly": "#{edr.adaptor.adminconsultdatabase.migrationsassembly}#",
+          "command": "#{edr.adaptor.adminconsultdatabase.command}#"
+        }
+      }
+    },
+    {
+      "key": "AdaptorWindowsService",
+      "shouldExecute": "#{edr.adaptor.windowsservice.shouldexecute}#",
+      "value": {
+        "installationCredentialUserName": "#{OrchestratorAdaptorAccountUsername}#",
+        "installationCredentialPassword": "#{OrchestratorAdaptorAccountPassword}#",
+        "service": {
+          "name": "#{edr.adaptor.windowsservice.name}#",
+          "displayName": "#{edr.adaptor.windowsservice.displayName}#",
+          "description": "#{edr.adaptor.windowsservice.description}#",
+          "binaryPath": "#{edr.adaptor.windowsservice.binaryPath}#",
+          "enabled": "#{edr.adaptor.windowsservice.enabled}#",
+          "startup": "#{edr.adaptor.windowsservice.startup}#"
+        },
+        "configuration": {
+          "edreamsimporturl": "#{edr.adaptor.collector.edreams.importurl}#",
+          "edreamstokenSample": "#{edr.adaptor.collector.edreams.sample.token}#",
+          "edreamstokenStaffing": "#{edr.adaptor.collector.edreams.staffing.token}#",
+          "edreamstokenCustomerChange": "#{edr.adaptor.collector.edreams.customerchange.token}#",
+          "edreamstokenProjectChange": "#{edr.adaptor.collector.edreams.projectchange.token}#",
+          "edreamstokenUserChange": "#{edr.adaptor.collector.edreams.userchange.token}#",
+          "edreamstokenAdminConsult": "#{edr.adaptor.collector.edreams.adminconsult.token}#",
+          "mulesoftresource": "#{edr.adaptor.collector.mulesoft.resource}#",
+          "mulesofttenantid": "#{edr.adaptor.collector.mulesoft.tenantid}#",
+          "mulesoftauthorisationtokenclientid": "#{edr.adaptor.collector.mulesoft.authorisationtokenclientid}#",
+          "mulesoftauthorisationtokenclientsecret": "#{edr.adaptor.collector.mulesoft.authorisationtokenclientsecret}#",
+          "mulesoftapiclientid": "#{edr.adaptor.collector.mulesoft.apiclientid}#",
+          "mulesoftapiclientsecret": "#{edr.adaptor.collector.mulesoft.apiclientsecret}#",
+          "mulesoftcountry": "#{edr.adaptor.collector.mulesoft.country}#",
+          "connectionstringedreamsadaptor": "#{edr.adaptor.collector.connectionstring.edreamsadaptor}#",
+          "connectionstringedreamsadaptorlogging": "#{edr.adaptor.collector.connectionstring.edreamsadaptorlogging}#",
+          "connectionstringadminconsultcache": "#{edr.adaptor.collector.connectionstring.adminconsultcache}#",
+          "samplecollectorenabled": "#{edr.adaptor.collector.sample.enabled}#",
+          "samplecollectorinterval": "#{edr.adaptor.collector.sample.interval}#",
+          "samplecollectormulesoftpagesize": "#{edr.adaptor.collector.sample.mulesoftpagesize}#",
+          "samplecollectorexampleoption": "#{edr.adaptor.collector.sample.exampleoption}#",
+          "samplecollectorlastprocessed": "#{edr.adaptor.collector.sample.lastprocessed}#",
+          "samplecollectorwbsdetails": "#{edr.adaptor.collector.sample.wbsdetails}#",
+          "staffingcollectorenabled": "#{edr.adaptor.collector.staffing.enabled}#",
+          "staffingcollectorinterval": "#{edr.adaptor.collector.staffing.interval}#",
+          "staffingcollectormulesoftpagesize": "#{edr.adaptor.collector.staffing.mulesoftpagesize}#",
+          "staffingcollectorwbsdetailrequestbatchsize": "#{edr.adaptor.collector.staffing.wbsdetailrequestbatchsize}#",
+          "staffingcollectorensuredependantobjectsfordeStaffings": "#{edr.adaptor.collector.staffing.ensuredependantobjectsfordeStaffings}#",
+          "edreamsauditconfirmationletteremail": "#{edr.adaptor.collector.edreams.auditconfirmationletteremail}#",
+          "customercollectorenabled": "#{edr.adaptor.collector.customer.enabled}#",
+          "customercollectorinterval": "#{edr.adaptor.collector.customer.interval}#",
+          "customercollectormulesoftpagesize": "#{edr.adaptor.collector.customer.mulesoftpagesize}#",
+          "projectcollectorwbsdetailrequestbatchsize": "#{edr.adaptor.collector.project.wbsdetailrequestbatchsize}#",
+          "projectcollectorenabled": "#{edr.adaptor.collector.project.enabled}#",
+          "projectcollectorinterval": "#{edr.adaptor.collector.project.interval}#",
+          "projectcollectormulesoftpagesize": "#{edr.adaptor.collector.project.mulesoftpagesize}#",
+          "usercollectorenabled": "#{edr.adaptor.collector.user.enabled}#",
+          "usercollectorinterval": "#{edr.adaptor.collector.user.interval}#",
+          "adminconsultcollectorenabled": "#{edr.adaptor.collector.adminconsult.enabled}#",
+          "adminconsultcollectorinterval": "#{edr.adaptor.collector.adminconsult.interval}#",
+          "adminconsultcollectorconnectionstring": "#{edr.adaptor.collector.adminconsult.connectionstring}#"
+        },
+        "publishPackage": {
+          "packageSource": "#{edr.adaptor.publishpackage.packagesource}#",
+          "publishDestination": "#{edr.adaptor.publishpackage.publishdestination}#"
+        }
+      }
+    }
+  ]
+}
